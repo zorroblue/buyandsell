@@ -129,12 +129,11 @@ def send_interest(request):
 def cancel_interest(request):
 	if request.method == 'POST':
  		interestid = request.POST.get('interestid')
- 		while True:
- 		#try:
+ 		try:
  			interest = Interest.objects.filter(interest_id__exact = interestid).delete()
  			print interest
  			return JsonResponse({'status' : 'success'})
- 		#except:
+ 		except:
  			return JsonResponse({'status':'failure'})	
 
 # get all interest messages for bids by user
@@ -143,6 +142,6 @@ def cancel_interest(request):
 def get_all_interests(request):
 	if request.method == 'GET':
 		userid = request.GET.get('userid')
-		#interests = Interest.objects.filter(item__seller__user_id = userid)
-		interests = Interest.objects.all()
+		interests = Interest.objects.filter(item__seller__user_id = userid)
+		#interests = Interest.objects.all()
 		return JsonResponse(json.loads(serializers.serialize('json',interests)),safe=False)
