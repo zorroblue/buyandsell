@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!^8*zs^jo)h5_mx0cbal+mts%lrd*$b^e%loz=f*pkz@8nut!g'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ 'sheltered-refuge-21205.herokuapp.com']
 
 
 # Application definition
