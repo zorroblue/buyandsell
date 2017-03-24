@@ -19,7 +19,7 @@ def create_user(request):
 		try:
 			userid = request.POST.get('userid')
 			name = request.POST.get('name')
-			contact = request.POST.get('contact')
+			email = request.POST.get('email')
 			print "User",userid
 			user = User.objects.filter(user_id__exact = userid)
 			print user
@@ -28,7 +28,7 @@ def create_user(request):
 			if len(user)!=0:
 				return JsonResponse({'status':'exists'})
 			
-			user = User(user_id = userid, name = name, contact = contact)
+			user = User(user_id = userid, name = name, email = email)
 			user.save()
 			return JsonResponse({'status':'success'})
 		except:
@@ -44,6 +44,10 @@ def create_offer(request):
 			price = request.POST.get('price')
 			description  = request.POST.get('description')
 			title = request.POST.get('title')
+			url = request.POST.get('url')
+			if url == None:
+				url = "default" # give default value
+
 			status = False # status of item
 			negotiable = True # negotiable or not
 			sellerid = request.POST.get('sellerid')
@@ -112,12 +116,14 @@ def send_interest(request):
  	if request.method == 'POST':
  		userid = request.POST.get('userid')
  		itemid = request.POST.get('itemid')
- 		print userid,itemid
- 		#while True:
+ 		quoted_price = request.POST.get('quoted_price')
+ 		print userid,itemid,quoted_price
  		try:
  			user = User.objects.get(user_id = userid)
  			item = Item.objects.get(item_id = itemid )
- 			interest = Interest(buyer = user, item = item )
+ 			if quoted_price is None:
+ 				quoted_price = item.price
+ 			interest = Interest(buyer = user, item = item, quoted_price = quoted_price )
  			interest.save()
  			return JsonResponse({'status' : 'success'})
  		except:
