@@ -41,7 +41,8 @@ def create_user(request):
 @csrf_exempt
 def create_offer(request):
 	if request.method == 'POST':
-		try:
+		#try:
+		while True
 			price = request.POST.get('price')
 			description  = request.POST.get('description')
 			title = request.POST.get('title')
@@ -58,8 +59,9 @@ def create_offer(request):
 			offer = Item(price = price , description = description, posted_date = posted_date, status = status , title = title, negotiable = negotiable, seller = seller, url=url)
 			offer.save()
 			return JsonResponse({'status':'success'})
-		except:
-			return JsonResponse({'status' : 'failure'})
+			break
+		#except:
+		#	return JsonResponse({'status' : 'failure'})
 
 # Display all my offers
 #GET
