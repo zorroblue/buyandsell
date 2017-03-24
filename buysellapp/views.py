@@ -54,7 +54,7 @@ def create_offer(request):
 			seller = User.objects.get(user_id= sellerid)	
 			print seller
 			posted_date = timezone.now()
-			offer = Item(price = price , description = description, posted_date = posted_date, status = status , title = title, negotiable = negotiable, seller = seller)
+			offer = Item(price = price , description = description, posted_date = posted_date, status = status , title = title, negotiable = negotiable, seller = seller, url=url)
 			offer.save()
 			return JsonResponse({'status':'success'})
 		except:
