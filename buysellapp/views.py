@@ -31,7 +31,8 @@ def create_user(request):
 			user = User(user_id = userid, name = name, email = email)
 			user.save()
 			return JsonResponse({'status':'success'})
-		except:
+		except Exception as e:
+			print str(e)
 			return JsonResponse({'status' : 'failure'})
 
 #Create a new offer
