@@ -42,7 +42,7 @@ def create_user(request):
 def create_offer(request):
 	if request.method == 'POST':
 		#try:
-		while True:
+		if True:
 			price = request.POST.get('price')
 			description  = request.POST.get('description')
 			title = request.POST.get('title')
@@ -59,7 +59,7 @@ def create_offer(request):
 			offer = Item(price = price , description = description, posted_date = posted_date, status = status , title = title, negotiable = negotiable, seller = seller, url=url)
 			offer.save()
 			return JsonResponse({'status':'success'})
-			break
+			#break
 		#except:
 		#	return JsonResponse({'status' : 'failure'})
 

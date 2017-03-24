@@ -13,7 +13,7 @@ class User(models.Model):
 		return self.name.encode('utf-8')
 
 class Item(models.Model):
-	item_id = models.IntegerField(primary_key=True)
+	item_id = models.AutoField(primary_key=True)
 	price = models.IntegerField(null=True)
 	description  = models.CharField(max_length=500)
 	title = models.CharField(max_length=100)
