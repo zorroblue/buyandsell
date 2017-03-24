@@ -42,7 +42,7 @@ def create_user(request):
 def create_offer(request):
 	if request.method == 'POST':
 		#try:
-		while True:
+		while True
 			price = request.POST.get('price')
 			description  = request.POST.get('description')
 			title = request.POST.get('title')
