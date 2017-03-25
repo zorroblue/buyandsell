@@ -4,8 +4,8 @@
 
 There are two main types of post - offers and bids
 
-What you offer to sell, is called an offer
-Other users' offers are called bids 
+What you offer to sell, is called an offer. <br>
+Other users' offers are called bids.
 
 ## Working:
 
