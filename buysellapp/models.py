@@ -6,8 +6,8 @@ from django.db import models
 
 class User(models.Model):
 	user_id = models.CharField(max_length = 10,primary_key = True)
-	name = models.CharField(max_length=100)
-	email = models.CharField(max_length=100)
+	name = models.CharField(max_length=100, null=True)
+	email = models.CharField(max_length=100, null=True)
 
 	def __str__(self):
 		return self.name.encode('utf-8')
