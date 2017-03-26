@@ -1,6 +1,0 @@
-
-/offers
-
-GET
-get all my requests
-
