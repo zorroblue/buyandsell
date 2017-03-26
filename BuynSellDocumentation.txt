@@ -1,0 +1,105 @@
+> /createuser , method : POST 
+	This end point is used to create a new user 
+	Parameters required : 
+		userid : String, Roll number of the student
+		name : String, Name of the student 
+		email : String, Email id of the student
+	Parameters returned :
+		status : String, the status of the query execution. 
+			== "exists" - if the user is already present
+			== "success" - if the user is successfully created 
+			== "failure" - if the program ran into some error
+
+> /interests , method : GET 
+	This endpoint is used to list all the items a particular user has shown interest in. 
+	Parameters required :
+		userid : String, Roll number of the student
+	Parameters returned :
+		This returns a list of dicitionaries with the following fields. 
+			models : The name of the model it is returning 
+			pk : Integer, Interest id 
+			fields : A dictionary with following fields. 
+				quoted_price : Integer, The price quoted by the buyer 
+				notified_seller : Boolean, 
+								True - if the seller has been notified, 
+								False - if the seller has not been notified 
+				buyer : Roll no. of the buyer
+
+
+> /cancelinterest , method : POST 
+	This endpoint is used to cancel the interest of particular user in a particular item.
+	Parameters required :
+		interestid : Integer, Interest id 
+	Parameters returned :
+		status : String, the status of the query execution. 
+			== "success" - if the interest is successfully deleted 
+			== "failure" - if the program ran into some error	
+
+> /sendinterest , method : POST 
+	This endpoint is used to send a new interest from a buyer for an item. 
+	Paramenters required :
+		userid : String, The roll number of the buyer 
+		itemid : Integer, The id of the item  
+		quoted_price : Integer, The price quoted by the buyer 
+	Parameters returned :
+		status : String, the status of the query execution. 
+			== "success" - if the interest is successfully added to the database 
+			== "failure" - if the program ran into some error	
+
+> /closeoffer , method : POST  
+	This endpoint is used to close an existing offer. 
+		Paramenters required :
+			userid : String, The roll number of the buyer 
+			itemid : Integer, The id of the item  
+		Parameters returned : 
+			status : String, the status of the query execution. 
+				== "success" - if the offer is successfully closed 
+				== "failure" - if the program ran into some error
+
+> /createoffer , method : POST
+	This endpoint is used to create a new offer i.e. post a new item to sell. 
+		Parameters required : 
+			price : Integer, Price of the item. 
+			description : String, Description of the item (max length 500 chars)
+			title : String, Title of the item, (max length 100 chars)
+			negotiable : Boolean, Checks if the item price is negotiable or not
+			sellerid : String, Roll number of the seller 
+			url : String, Complete URL of the image. (max length 1000 chars)
+		Parameters returned : 
+			status : String, the status of the query execution. 
+				== "success" - if the offer is successfully created 
+				== "failure" - if the program ran into some error
+
+> /bids , method : GET 
+	This endpoint returns all the items available to buy, i.e. it will not include the items posted by the querying user
+		Parameters required : 
+			userid : String, Roll number of the student. 
+		Parameters returned :
+			This returns a list of dicitionaries with the following fields. 
+				models : The name of the model it is returning 
+				pk : Integer, item id
+				fields : A dictionary with following fields. 
+					seller : String, The roll number of the seller
+					posted_date : String, Date&Time when the item was posted,(ex : 2017-03-24T19:32:58.149Z) 
+					url : String, URL of the image of item
+					price : Integer, Price of the item 
+					title : String, Title of the item 
+					description : String, Description of the item 
+					negotiable : Boolean, Checks if the item price is negotiable or not
+
+> /offers , method : 
+	This endpoint is used to list all the item posted by the particular user. 
+		Parameters required : 
+			userid : String, Roll number of the student. 
+		Parameters returned :
+			This returns a list of dicitionaries with the following fields. 
+				models : The name of the model it is returning 
+				pk : Integer, item id
+				fields : A dictionary with following fields. 
+					seller : String, The roll number of the seller
+					posted_date : String, Date&Time when the item was posted,(ex : 2017-03-24T19:32:58.149Z) 
+					url : String, URL of the image of item
+					price : Integer, Price of the item 
+					title : String, Title of the item 
+					description : String, Description of the item 
+					negotiable : Boolean, Checks if the item price is negotiable or not
